@@ -1,0 +1,69 @@
+<!doctype>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>!!</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-image: url('work-3.jpg');
+                opacity: 1;
+                transition: all .5s ease;
+            }
+
+            .box.hide {
+                opacity: 0;
+            }
+
+            .box.huge {
+                transform: scale(2);
+            }
+        </style>
+    </head>
+    <body>
+        <span id="span" style="border: 1px solid red"></span>
+        <input id="input">
+
+        <div class="box"></div>
+        <button id="btn">Click me!</button>
+        <button id="btn2">Click me 2!</button>
+
+        <script>
+            const span = document.querySelector('#span');
+            const input = document.querySelector('#input');
+            const box = document.querySelector('.box');
+            const btn = document.querySelector('#btn');
+            const btn2 = document.querySelector('#btn2');
+
+            console.dir(span);
+
+            const css = getComputedStyle(span).border;
+
+            console.log(css);
+
+            const typeBorder = css.split(' ')[1];
+
+            console.log(typeBorder);
+
+            input.addEventListener('input', function(event){
+                const target = event.target;
+                const value = target.value;
+
+                span.innerText = value;
+            });
+
+            btn.addEventListener('click', function(){
+                box.classList.toggle('hide');
+            });
+
+            btn2.addEventListener('click', function(){
+                box.classList.toggle('huge');
+            });
+
+            setInterval(() => {
+                box.classList.toggle('hide');
+            }, 1000)
+        </script>
+    </body>
+</html>
